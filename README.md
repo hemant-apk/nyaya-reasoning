@@ -28,27 +28,45 @@ Match effort to the stakes of the question:
 ## Examples
 
 ### 1. Root-Cause Debugging (Full Mode)
+
 * **Prompt:**
+* 
   > "Our API latency jumped right after a database index update. Check my reasoning that the index caused the spike—what else could explain it?"
+  
 * **Sample output:**
+  
   > **Conclusion:** The new index is only one plausible cause (confidence: low-to-moderate, because timing alone does not establish causation).
+  
   > **Rule:** Adding a heavily written index can slow down writes or cause lock contention on hot tables, though well-chosen indexes usually speed up reads.
+  
   > **Counterexample check:** Indexes often improve query latency rather than hurt it; a case where the rule fails is a read-heavy endpoint whose slow query actually improved.
+  
   > **Other explanations:** A concurrent traffic spike, connection pool exhaustion, or lock contention during index build; comparing latency against write volume and lock wait metrics before/after the change would separate them.
+  
   > **What would settle it:** Check query plans, lock waits, and write amplification around the deploy timestamp, or test rolling back the index in staging.
 
 ### 2. Reviewing an Argument or Claim (Critique Mode)
+
 * **Prompt:**
+  
   > "Play devil's advocate on this claim: 'Our onboarding completion rose 12% this week after changing the welcome email, so the new email clearly improves activation.'"
+  
 * **Sample output:**
+  
   > **Restated argument:** Onboarding completion rose 12% after the email change; because email updates improve activation, the new email caused the jump.
+  
   > **Main weakness:** *Erratic reason / hidden condition*—a single-week lift can come from a higher-intent traffic source, a smaller cohort, or a UI tweak shipped at the same time rather than the email itself.
+  
   > **What would fix it:** Compare activation across cohorts and channels over multiple weeks or run an A/B split on the welcome email.
 
 ### 3. Trade-Off Decisions (Light Mode)
+
 * **Prompt:**
+  
   > "Should we rewrite this legacy service now or wait until Q2?"
+  
 * **Sample output:**
+  
   > Hold off on a full rewrite unless current bugs are actively blocking core releases—incremental refactoring usually beats big-bang rewrites on risk and delivery speed (moderate confidence). That assumes the service is stable enough to isolate changes; if outages are frequent or team velocity has stalled, a targeted replacement may be worth the cost.
 
 
