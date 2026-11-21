@@ -69,6 +69,38 @@ Match effort to the stakes of the question:
   
   > Hold off on a full rewrite unless current bugs are actively blocking core releases—incremental refactoring usually beats big-bang rewrites on risk and delivery speed (moderate confidence). That assumes the service is stable enough to isolate changes; if outages are frequent or team velocity has stalled, a targeted replacement may be worth the cost.
 
+# **How to Install Nyaya Reasoning**
+
+1. Download or clone the repository:
+   ```
+   git clone https://github.com/hemant-apk/nyaya-reasoning.git
+   ```
+2. Open the downloaded `nyaya-reasoning` folder.
+3. Copy the entire folder, including `SKILL.md` and `references/`.
+4. Paste it into your AI assistant's skills directory.
+5. Restart your AI assistant.
+6. Start using it by asking:
+   ```
+   Use Nyaya Reasoning to analyze this problem.
+   ```
+
+**That's it!** Nyaya Reasoning is ready to use in a compatible AI assistant.
+
+*Note: The skills directory depends on the AI assistant you use.*
+
+
+## What's Inside?
+
+- **`SKILL.md`** – The main instruction file that teaches the AI assistant how to apply Nyāya reasoning. It covers:
+  - Five-member logical argument structure.
+  - Identifying hidden assumptions.
+  - Detecting logical fallacies.
+  - Testing arguments with counterexamples.
+  - Evaluating alternative explanations.
+  - Assessing confidence and evidence.
+
+- **`references/`** – Contains supporting documents that provide additional guidance when needed. These include:
+  - `source-reliability.md` – Explains how to evaluate the credibility of sources, speakers, and statements.
 
 
 ## Notes & Limitations
